@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'omniauth-mayun/version'
+require 'omniauth-csdn/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "omniauth-mayun"
-  spec.version       = Omniauth::Mayun::VERSION
+  spec.name          = "omniauth-csdn"
+  spec.version       = Omniauth::Csdn::VERSION
   spec.authors       = ["Zoker"]
   spec.email         = ["kaixuanguiqu@gmail.com"]
-  spec.description   = %q{Oauth2 for git.oschina.net}
-  spec.summary       = %q{Oauth2 for git.oschina.net}
-  spec.homepage      = "https://git.oschina.net"
+  spec.description   = %q{Oauth2 for csdn.net}
+  spec.summary       = %q{Oauth2 for csdn.net}
+  spec.homepage      = "https://csdn.net"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

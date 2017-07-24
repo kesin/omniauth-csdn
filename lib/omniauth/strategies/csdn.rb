@@ -2,11 +2,11 @@ require 'omniauth-oauth2'
 
 module OmniAuth
   module Strategies
-    class Mayun < OmniAuth::Strategies::OAuth2
+    class Csdn < OmniAuth::Strategies::OAuth2
       option :client_options, {
-          :site => 'https://git.net',
-          :authorize_url => '/oauth/authorize',
-          :token_url => '/oauth/token',
+          :site => 'http://api.csdn.net',
+          :authorize_url => '/oauth2/authorize',
+          :token_url => '/oauth2/access_token',
       }
 
       def request_phase
@@ -25,15 +25,12 @@ module OmniAuth
         end
       end
 
-      uid { raw_info['id'].to_s }
+      uid { raw_info['username'].to_s }
 
       info do
         {
-            'nickname' => raw_info['name'],
-            'email' => raw_info['email'],
-            'name' => raw_info['name'],
-            'avatar' => raw_info['avatar_url'],
-            'blog' => raw_info['blog'],
+            'nickname' => raw_info['nickname'],
+            'name' => raw_info['username']
         }
       end
 
@@ -44,11 +41,11 @@ module OmniAuth
       def raw_info
 	      access_token.options[:param_name] = 'access_token'
         access_token.options[:mode] = :query
-        @raw_info ||= access_token.get('/api/v5/user').parsed
+        @raw_info ||= access_token.get('/user/getinfo').parsed
       end
 
     end
   end
 end
 
-OmniAuth.config.add_camelization 'mayun', 'Mayun'
+OmniAuth.config.add_camelization 'csdn', 'Csdn'

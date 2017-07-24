@@ -1,12 +1,12 @@
-# Omniauth::MaYun
+# Omniauth::CSDN
 
-Oauth2 for git.oschina.net
+Oauth2 for csdn.net
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'omniauth-mayun'
+    gem 'omniauth-csdn'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install omniauth-mayun
+    $ gem install omniauth-csdn
 
 ## Usage
 
