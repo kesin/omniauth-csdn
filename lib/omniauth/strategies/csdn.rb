@@ -29,8 +29,9 @@ module OmniAuth
 
       info do
         {
-            'nickname' => raw_info['nickname'],
-            'name' => raw_info['username']
+            'name' => raw_info['nickname'],
+            'username' => raw_info['username'],
+            'email' => @email['email']
         }
       end
 
@@ -41,6 +42,7 @@ module OmniAuth
       def raw_info
 	      access_token.options[:param_name] = 'access_token'
         access_token.options[:mode] = :query
+        @email ||= access_token.get('/user/getemail').parsed
         @raw_info ||= access_token.get('/user/getinfo').parsed
       end
 
