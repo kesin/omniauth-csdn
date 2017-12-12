@@ -40,10 +40,12 @@ module OmniAuth
       end
 
       def raw_info
-	      access_token.options[:param_name] = 'access_token'
+        access_token.options[:param_name] = 'access_token'
         access_token.options[:mode] = :query
         @email ||= access_token.get('/user/getemail').parsed
         @raw_info ||= access_token.get('/user/getinfo').parsed
+        raise ::MultiJson::DecodeError unless @raw_info.is_a?(Hash)
+        @raw_info
       end
 
     end
